@@ -1,0 +1,20 @@
+name: front_end
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ubuntu
+          key: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+
+        script: |
+          cd Full-Stack-Deployment/frontend
+          git pull origin main
+          npm install
+          npm run dev

@@ -11,7 +11,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ubuntu
-          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
 
           script: |

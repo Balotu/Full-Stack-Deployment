@@ -10,14 +10,14 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ubuntu
-          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
 
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
-            nvm use 14
-            cd Full-Stack-Deployment/frontend
-            git pull origin main
-            npm install
-            npm run dev
+           export NVM_DIR="$HOME/.nvm"
+           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+           nvm use 14
+           cd Full-Stack-Deployment/frontend
+           git pull origin main
+           npm install
+           npm run dev

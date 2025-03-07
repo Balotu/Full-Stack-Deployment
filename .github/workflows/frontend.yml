@@ -14,24 +14,13 @@ jobs:
           port: ${{ secrets.PORT }}
 
           script: |
-            # Install FNM if not already installed
-            if [ ! -d "$HOME/.fnm" ]; then
-              curl -fsSL https://fnm.vercel.app/install | bash
-            fi
-            
-            # Load FNM
-            export PATH="$HOME/.fnm:$PATH"
-            [ -s "$HOME/.fnm/fnm.sh" ] && \. "$HOME/.fnm/fnm.sh"
-
-            # Use Node.js version 14
-            fnm install 14
-            fnm use 14
-
-            # Verify Node and NPM versions
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+            nvm use 14
+            echo "Current PATH: $PATH"
             echo "Node version: $(node -v)"
             echo "NPM version: $(npm -v)"
-
-            # Change directory and run commands
+           
             cd Full-Stack-Deployment/frontend
             git pull origin main
             npm install

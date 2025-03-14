@@ -1,0 +1,21 @@
+name: back_end_CI/CD Pipeline
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ubuntu
+          key: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+
+          script: |
+            cd Full-Stack-Deployment/backend
+            git pull origin main
+            poetry install
+            poetry run bash ./prestart.sh
+            poetry run uvicorn app.main:app --reload

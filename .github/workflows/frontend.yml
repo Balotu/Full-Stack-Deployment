@@ -24,4 +24,4 @@ jobs:
             cd Full-Stack-Deployment/frontend
             git pull origin main
             npm install
-            npm run dev -- --host 0.0.0.0
+            pm2 start npm --name "frontend-app" -- run dev -- --host 0.0.0.0

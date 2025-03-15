@@ -17,5 +17,6 @@ jobs:
             cd Full-Stack-Deployment/backend
             git pull origin main
             poetry install
-            poetry run bash ./prestart.sh
-            poetry run uvicorn app.main:app --reload
+            poetry run bash ./prestart.sh &
+            poetry run uvicorn app.main:app --reload &
+        

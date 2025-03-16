@@ -5,4 +5,10 @@ import { defineConfig } from "vite"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), TanStackRouterVite()],
+  server: {
+    allowedHosts: [
+      'balotu.xyz',
+      'localhost', // Optional: include localhost if needed
+    ],
+  },
 })
